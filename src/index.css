@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--theme-primary);
+  --color-primary-hover: var(--theme-primary-hover);
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-card: var(--theme-card);
+  --color-theme-text: var(--theme-text);
+  --color-theme-muted: var(--theme-text-muted);
+  --color-theme-border: var(--theme-border);
+  
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+}
+
+:root, [data-theme="warm-beige"] {
+  --theme-primary: #3b82f6; /* Blue button */
+  --theme-primary-hover: #2563eb;
+  --theme-bg: #FAF9F6; /* Luxury warm white/beige */
+  --theme-card: #ffffff;
+  --theme-text: #2c2520;
+  --theme-text-muted: #73675f;
+  --theme-border: #eae3db;
+  --hero-overlay-start: #1b1513; /* Exact dark warm brown/black */
+  --hero-overlay-end: rgba(27, 21, 19, 0.35);
+  --hero-grad-blend: rgba(250, 249, 246, 1);
+}
+
+[data-theme="luxury-dark"] {
+  --theme-primary: #d4af37; /* Gold accent */
+  --theme-primary-hover: #bfa030;
+  --theme-bg: #0d0d0d;
+  --theme-card: #161616;
+  --theme-text: #f5f5f5;
+  --theme-text-muted: #a0a0a0;
+  --theme-border: #262626;
+  --hero-overlay-start: rgba(10, 10, 10, 0.98);
+  --hero-overlay-end: rgba(45, 45, 45, 0.4);
+  --hero-grad-blend: rgba(13, 13, 13, 1);
+}
+
+[data-theme="emerald-velvet"] {
+  --theme-primary: #e5c158; /* Warm brass */
+  --theme-primary-hover: #cca842;
+  --theme-bg: #061c14;
+  --theme-card: #0d281f;
+  --theme-text: #f0fdf4;
+  --theme-text-muted: #86efac;
+  --theme-border: #143e30;
+  --hero-overlay-start: rgba(3, 15, 11, 0.98);
+  --hero-overlay-end: rgba(10, 50, 35, 0.45);
+  --hero-grad-blend: rgba(6, 28, 20, 1);
+}
+
+[data-theme="rose-quartz"] {
+  --theme-primary: #b07e7a; /* Warm muted rose */
+  --theme-primary-hover: #9c6c68;
+  --theme-bg: #fffbf9;
+  --theme-card: #ffffff;
+  --theme-text: #3d2c2b;
+  --theme-text-muted: #947a78;
+  --theme-border: #f5e8e5;
+  --hero-overlay-start: rgba(69, 52, 50, 0.95);
+  --hero-overlay-end: rgba(224, 201, 198, 0.4);
+  --hero-grad-blend: rgba(255, 251, 249, 1);
+}
+
+[data-theme="ocean-navy"] {
+  --theme-primary: #ff8a65; /* Coral accent */
+  --theme-primary-hover: #f4511e;
+  --theme-bg: #0b0f19;
+  --theme-card: #121824;
+  --theme-text: #f8fafc;
+  --theme-text-muted: #94a3b8;
+  --theme-border: #1e293b;
+  --hero-overlay-start: rgba(8, 12, 22, 0.97);
+  --hero-overlay-end: rgba(30, 50, 90, 0.4);
+  --hero-grad-blend: rgba(11, 15, 25, 1);
+}
+
+/* Hide scrollbar for main document viewport */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+html,
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom scrollbar for inner panels (drawers, sidebar, etc.) */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-text-muted);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Smooth zoom on hover */
+.zoom-effect {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.zoom-effect:hover {
+  transform: scale(1.04);
+}
+
+/* Slide in drawer animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
